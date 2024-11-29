@@ -1,0 +1,114 @@
+.table-container {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.completed {
+  color: green;
+  font-weight: bold;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 30px;
+}
+
+.table-container {
+  padding: 16px;
+}
+
+.header-container {
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.search-field {
+  flex: 1;
+  margin-right: 16px;
+  margin-bottom: 0; /* Remove bottom margin */
+  padding: 0px; /* Adjust padding as needed */
+  line-height: 1; /* Set line height to 1 to reduce space */
+}
+
+.filter-field {
+  margin-left: 16px;
+}
+
+.mat-icon-button {
+  margin-left: 16px;
+}
+
+
+
+
+
+
+
+.add-task-container {
+  display: flex;
+  align-items: center;
+   /* Border color for the rectangular box */
+  border-radius: 4px; /* Rounded corners for the rectangular box */
+  padding: 25px; /* Padding around the content */
+  height: 60px;
+}
+
+.circle-button {
+  border-radius: 50%;
+  width: 45px; /* Size of the circle */
+  height: 45px; /* Size of the circle */
+  background-color: #3f51b5; /* Blue background */
+  color: white; /* Icon color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s ease;
+  border: none; /* Remove default button border */
+}
+
+.circle-button:hover,
+.circle-button:focus {
+  background-color: rgba(63, 81, 181, 0.8); /* Slightly darker blue on hover/focus */
+}
+
+.add-icon {
+  font-size: 24px; /* Adjust icon size as needed */
+}
+
+.add-task-text {
+  margin-left: 8px; /* Space between icon and text */
+  font-size: 16px; /* Adjust font size as needed */
+}
+
+
+
+
+
+/* task-list.component.css or task-list.component.scss */
+.action-container {
+  display: flex;
+  align-items: center; /* Vertically center the items */
+}
+
+.action-container mat-slide-toggle {
+  margin-right: 8px; /* Space between toggle and icon */
+}
+
+.delete-icon {
+  font-size: 24px; /* Adjust the size of the icon */
+  transition: color 0.3s; /* Smooth transition for hover effect */
+}
+
+.delete-icon:hover {
+  color: darkred; /* Change color on hover */
+}
+
+
+

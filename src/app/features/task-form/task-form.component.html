@@ -1,0 +1,49 @@
+<app-user-details></app-user-details>
+<form (ngSubmit)="onSubmit()" #taskForm="ngForm" style="margin-top: 50px;">
+    <div>
+      <label for="taskName">Task Name:</label>
+      <input type="text" id="taskName" required [(ngModel)]="task.name" name="taskName" #taskName="ngModel" />
+      <div *ngIf="taskName.invalid && (taskName.dirty || taskName.touched)" class="error">
+        <div *ngIf="taskName.errors?.['required']">Task Name is required.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" required [(ngModel)]="task.description" name="description" #description="ngModel"></textarea>
+      <div *ngIf="description.invalid && (description.dirty || description.touched)" class="error">
+        <div *ngIf="description.errors?.['required']">Description is required.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="startDate">Start Date:</label>
+      <input type="datetime-local" id="startDate" required [(ngModel)]="task.startDate" name="startDate" (change)="calculateDays()" #startDate="ngModel" />
+      <div *ngIf="startDate.invalid && (startDate.dirty || startDate.touched)" class="error">
+        <div *ngIf="startDate.errors?.['required']">Start Date is required.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="endDate">End Date:</label>
+      <input type="datetime-local" id="endDate" required [(ngModel)]="task.endDate" name="endDate" (change)="calculateDays()" #endDate="ngModel" />
+      <div *ngIf="endDate.invalid && (endDate.dirty || endDate.touched)" class="error">
+        <div *ngIf="endDate.errors?.['required']">End Date is required.</div>
+      </div>
+    </div>
+  
+    <div>
+      <label for="daysRequired">Number of Days Required:</label>
+      <input type="number" id="daysRequired" [value]="daysRequired" readonly />
+    </div>
+  
+    <div>
+      <label>Status:</label>
+      <select [(ngModel)]="task.status" name="status">
+        <option value="Pending">Pending</option>
+        <option value="Completed">Completed</option>
+      </select>
+    </div>
+  
+    <button type="submit" [disabled]="taskForm.invalid">Add Task</button>
+</form>

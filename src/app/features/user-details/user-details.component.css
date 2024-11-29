@@ -1,0 +1,40 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar-left {
+    display: flex;
+    align-items: center;
+  }
+  
+  .app-logo {
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .app-name {
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  .navbar-center {
+    flex-grow: 1;
+    text-align: center;
+  }
+  
+  .welcome-message {
+    font-size: 1.2em;
+  }
+  
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+  
+  .search-bar {
+    width: 200px;
+    margin-right: 20px;
+  }
+  

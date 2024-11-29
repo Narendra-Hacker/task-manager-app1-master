@@ -1,0 +1,83 @@
+<app-user-details></app-user-details>
+
+<div class="table-container" style="margin-top: 70px;">
+  <div class="header-container">
+
+    <div class="add-task-container">
+      <button mat-icon-button class="circle-button" (click)="navigateToAddTask()">
+        <mat-icon class="add-icon">add</mat-icon>
+      </button>
+      <span class="add-task-text">Add Task</span>
+    </div>
+
+    <mat-form-field appearance="fill" class="search-field">
+      <mat-label>Search tasks...</mat-label>
+      <input matInput (input)="onSearch($event)" />
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="filter-field">
+      <mat-label>Filter by Status</mat-label>
+      <mat-select [(ngModel)]="selectedStatus" (selectionChange)="onStatusChange($event)">
+        <mat-option value="">All</mat-option>
+        <mat-option value="Pending">Pending</mat-option>
+        <mat-option value="Completed">Completed</mat-option>
+      </mat-select>
+      <mat-icon matSuffix>filter_list</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <table mat-table [dataSource]="paginatedTasks" class="mat-elevation-z8">
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let task">{{ task.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef>Description</th>
+      <td mat-cell *matCellDef="let task">{{ task.description }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="startDate">
+      <th mat-header-cell *matHeaderCellDef>Start Date</th>
+      <td mat-cell *matCellDef="let task">{{ task.startDate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="endDate">
+      <th mat-header-cell *matHeaderCellDef>End Date</th>
+      <td mat-cell *matCellDef="let task">{{ task.endDate | date }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef>Status</th>
+      <td mat-cell *matCellDef="let task">
+        <span [ngClass]="{'completed': task.status === 'Completed'}">{{ task.status }}</span>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let task">
+        <div class="action-container">
+          <mat-slide-toggle color="primary" [checked]="task.status === 'Completed'" (change)="toggleStatus(task)"
+            [ngClass]="{
+              'completed-toggle': task.status === 'Completed',
+              'pending-toggle': task.status === 'Pending'
+            }">
+          </mat-slide-toggle>
+          <mat-icon class="delete-icon" color="warn" (click)="deleteTask(task.id)" style="cursor: pointer;">
+            cancel
+          </mat-icon>
+        </div>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['name', 'description', 'startDate', 'endDate', 'status', 'actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['name', 'description', 'startDate', 'endDate', 'status', 'actions'];">
+    </tr>
+  </table>
+
+  <mat-paginator [length]="totalPages * pageSize" [pageSize]="pageSize" [pageSizeOptions]="pageSizes"
+    (page)="changePage($event)">
+  </mat-paginator>
+</div>

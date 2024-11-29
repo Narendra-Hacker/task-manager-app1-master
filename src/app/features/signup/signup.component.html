@@ -1,0 +1,42 @@
+<form (ngSubmit)="onSignup()" #signupForm="ngForm" style="margin-top: 150px;">
+
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+        <mat-label>Name</mat-label>
+        <input matInput type="text" [(ngModel)]="user.name" name="name" required />
+        <mat-error *ngIf="signupForm.controls['name']?.invalid && signupForm.controls['name']?.touched">
+            <span *ngIf="signupForm.controls['name']?.errors?.['required']">Name is required.</span>
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="tel" [(ngModel)]="user.phoneNo" name="phoneNo" required />
+        <mat-error *ngIf="signupForm.controls['phoneNo']?.invalid && signupForm.controls['phoneNo']?.touched">
+            <span *ngIf="signupForm.controls['phoneNo']?.errors?.['required']">Phone Number is required.</span>
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+        <mat-label>Email</mat-label>
+        <input matInput type="email" [(ngModel)]="user.email" name="email" required email />
+        <mat-error *ngIf="signupForm.controls['email']?.invalid && signupForm.controls['email']?.touched">
+            <span *ngIf="signupForm.controls['email']?.errors?.['required']">Email is required.</span>
+            <span *ngIf="signupForm.controls['email']?.errors?.['email']">Invalid email format.</span>
+        </mat-error>
+    </mat-form-field>
+    
+    <mat-form-field appearance="fill" class="w-100 mb-3">
+        <mat-label>Password</mat-label>
+        <input matInput type="password" [(ngModel)]="user.password" name="password" required minlength="6" />
+        <mat-error *ngIf="signupForm.controls['password']?.invalid && signupForm.controls['password']?.touched">
+            <span *ngIf="signupForm.controls['password']?.errors?.['required']">Password is required.</span>
+            <span *ngIf="signupForm.controls['password']?.errors?.['minlength']">Password must be at least 6 characters long.</span>
+        </mat-error>
+    </mat-form-field>
+    
+    <button mat-raised-button color="primary" type="submit" class="w-100" [disabled]="signupForm.invalid">Sign Up</button>
+
+    <p class="text-center mt-3">
+        Already a member? <a routerLink="/login">Login</a>
+    </p>
+</form>

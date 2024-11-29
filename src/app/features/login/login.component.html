@@ -1,0 +1,20 @@
+<div class="d-flex justify-content-center align-items-center vh-100" style="background-image: url('https://www.highgear.com/wp-content/uploads/2022/12/why-is-task-management-important-1.jpg'); background-size: cover; background-position: center;">
+     <mat-card class="p-4 shadow-lg rounded" style="width: 500px; min-height: 500px; background-color: rgba(255, 255, 255, 0.9);">
+       <h2 class="text-center mb-4" style="color: #333;">Login</h2>
+       <form (ngSubmit)="onLogin()">
+         <mat-form-field appearance="fill" class="w-100 mb-3">
+           <mat-label>Email</mat-label>
+           <input matInput type="email" [(ngModel)]="email" name="email" required />
+         </mat-form-field>
+         <mat-form-field appearance="fill" class="w-100 mb-3">
+           <mat-label>Password</mat-label>
+           <input matInput type="password" [(ngModel)]="password" name="password" required />
+         </mat-form-field>
+         <button mat-raised-button color="primary" type="submit" class="w-100" style="background-color: #007bff;">Login</button>
+       </form>
+       <p class="text-center mt-3">
+         Don't have an account? <a routerLink="/signup" style="color: #007bff;">Sign up</a>
+       </p>
+     </mat-card>
+   </div>
+   
